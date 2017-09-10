@@ -87,9 +87,9 @@ and replace the parameter in **connection.Connect(""Your Alpha Vantage API Key !
 $ dotnet run
 ```
 
-4. You can enjoy your _MSFT intraday time series_ displayed on your console :)
+6. You can enjoy your _MSFT intraday time series_ displayed on your console :)
 ***
 
 **Authors**: Simone Giuliani and Antonio Papa  
 
-**Email**: if you have any queries or suggestions please send us an email: sgiuliani.apapa@gmail.com
+**Email**: if you have any queries or suggestions please send us an email: sgiuliani.apapa at gmail.com
