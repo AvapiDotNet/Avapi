@@ -6,7 +6,7 @@ To start using Avapi you just need to:
 * Install Avapi package on your project
 * Consume the Avapi library
 
-To see the complete documentation of Avapi .NET CORE click [here](https://github.com/sgiulians/AvapiDotNetCore/wiki)
+To see the complete documentation of Avapi .NET CORE click [here](https://github.com/AvapiDotNet/Avapi/wiki)
 
 ## Register to Alpha Vantage
 To Claim the Alpha Vantage free API key, you should register [here](https://www.alphavantage.co/support/#api-key) 
