@@ -6,7 +6,7 @@ To start using Avapi you just need to:
 * Install Avapi package on your project
 * Consume the Avapi library
 
-To see the complete documentation of Avapi .NET CORE click [here](https://github.com/AvapiDotNet/Avapi/wiki)
+To see the complete documentation of Avapi .NET CORE click [here](https://github.com/sgiulians/AvapiDotNetCore/wiki)
 
 ## Register to Alpha Vantage
 To Claim the Alpha Vantage free API key, you should register [here](https://www.alphavantage.co/support/#api-key) 
@@ -45,10 +45,11 @@ $ dotnet restore
 ```
 
 4. Replace the content of Program.cs created automatically by 1. with the following code:
-```
+``` 
+
 using System;
 using System.IO;
-using Avapi.AvapiTIME_SERIES_INTRADAY;
+using Avapi.AvapiTIME_SERIES_DAILY;
 
 namespace Avapi
 {
@@ -62,23 +63,51 @@ namespace Avapi
             // Set up the connection and pass the API_KEY provided by alphavantage.co
             connection.Connect("Your Alpha Vantage API Key !!!!");
 
-            // Get the TIME_SERIES_INTRADAY query object
-            Int_TIME_SERIES_INTRADAY time_series_intraday =
-                connection.GetQueryObject_TIME_SERIES_INTRADAY();
+            // Get the TIME_SERIES_DAILY query object
+            Int_TIME_SERIES_DAILY time_series_daily =
+                connection.GetQueryObject_TIME_SERIES_DAILY();
 
-            // Perform the TIME_SERIES_INTRADAY request and get the result
-            IAvapiResponse_TIME_SERIES_INTRADAY time_series_intradayResponse = 
-            time_series_intraday.Query(
+            // Perform the TIME_SERIES_DAILY request and get the result
+            IAvapiResponse_TIME_SERIES_DAILY time_series_dailyResponse = 
+            time_series_daily.Query(
                  "MSFT",
-                 Const_TIME_SERIES_INTRADAY.TIME_SERIES_INTRADAY_interval.n_1min,
-                 Const_TIME_SERIES_INTRADAY.TIME_SERIES_INTRADAY_outputsize.compact,
-                 Const_TIME_SERIES_INTRADAY.TIME_SERIES_INTRADAY_datatype.json);
-                 
+                 Const_TIME_SERIES_DAILY.TIME_SERIES_DAILY_outputsize.compact,
+                 Const_TIME_SERIES_DAILY.TIME_SERIES_DAILY_datatype.json);
+
             // Printout the results
-            Console.WriteLine(time_series_intradayResponse.RowData);
+            Console.WriteLine("******** RAW DATA TIME_SERIES_DAILY ********");
+            Console.WriteLine(time_series_dailyResponse.RowData);
+
+            Console.WriteLine("******** STRUCTURED DATA TIME_SERIES_DAILY ********");
+            var data = time_series_dailyResponse.Data;
+            if (data.Error)
+            {
+                Console.WriteLine(data.ErrorMessage);
+            }
+            else
+            {
+                Console.WriteLine("Information: " + data.MetaData.Information);
+                Console.WriteLine("Symbol: " + data.MetaData.Symbol);
+                Console.WriteLine("LastRefreshed: " + data.MetaData.LastRefreshed);
+                Console.WriteLine("OutputSize: " + data.MetaData.OutputSize);
+                Console.WriteLine("TimeZone: " + data.MetaData.TimeZone);
+                Console.WriteLine("========================");
+                Console.WriteLine("========================");
+                foreach (var timeseries in data.TimeSeries)
+                {
+                    Console.WriteLine("open: " + timeseries.open);
+                    Console.WriteLine("high: " + timeseries.high);
+                    Console.WriteLine("low: " + timeseries.low);
+                    Console.WriteLine("close: " + timeseries.close);
+                    Console.WriteLine("volume: " + timeseries.volume);
+                    Console.WriteLine("DateTime: " + timeseries.DateTime);
+                    Console.WriteLine("========================");
+                }
+            }
         }
     }
 }
+
 ```
 and replace the parameter in **connection.Connect(""Your Alpha Vantage API Key !!!!")** , with your Alpha Vantage API key (to claim it see above).
 
