@@ -76,7 +76,7 @@ namespace Avapi
 
             // Printout the results
             Console.WriteLine("******** RAW DATA TIME_SERIES_DAILY ********");
-            Console.WriteLine(time_series_dailyResponse.RowData);
+            Console.WriteLine(time_series_dailyResponse.RawData);
 
             Console.WriteLine("******** STRUCTURED DATA TIME_SERIES_DAILY ********");
             var data = time_series_dailyResponse.Data;
