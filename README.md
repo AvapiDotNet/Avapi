@@ -19,11 +19,11 @@ You can manually download the official package [here](https://www.nuget.org/pack
 
 ### from the .NET CLI
 ```
-dotnet add package Avapi --version 1.1.0
+dotnet add package Avapi --version 1.3.1
 ```
 ### from the Package Manager
 ```
-Install-Package Avapi -Version 1.1.0
+Install-Package Avapi -Version 1.3.1
 ```
 
 ## Guided Example on how to consume Avapi library
@@ -36,7 +36,7 @@ $ dotnet new console
 
 2. Add the package to your project
 ```
-dotnet add package Avapi --version 1.1.0
+dotnet add package Avapi --version 1.3.1
 ```
 
 3. Restore the project
