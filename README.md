@@ -71,8 +71,7 @@ namespace Avapi
             IAvapiResponse_TIME_SERIES_DAILY time_series_dailyResponse = 
             time_series_daily.Query(
                  "MSFT",
-                 Const_TIME_SERIES_DAILY.TIME_SERIES_DAILY_outputsize.compact,
-                 Const_TIME_SERIES_DAILY.TIME_SERIES_DAILY_datatype.json);
+                 Const_TIME_SERIES_DAILY.TIME_SERIES_DAILY_outputsize.compact);
 
             // Printout the results
             Console.WriteLine("******** RAW DATA TIME_SERIES_DAILY ********");
