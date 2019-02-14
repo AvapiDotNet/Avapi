@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Program.cs" />
+    <Content Include="CodeGenerator.cs" />
+    <Content Include="Utility.cs" />
+    <Content Include="IAvapiConnection.cs" />
+    <Content Include="AvapiConnection.cs" />
+    <Content Include="Constant.cs" />
+    <Content Include="Example.cs" />
+    <Content Include="InterfaceAvaApi.cs" />
+    <Content Include="Implementation.cs" />
+    <Content Include="DocGenerator.cs" />
+    <Content Include="Documentation.cs" />
+    <Content Include="ExampleGenerator.cs" />
+    <Content Include="Csproj.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,5677 @@
+<avapi>
+	<operation>
+		<name>TIME_SERIES_INTRADAY</name>
+		<description>This API returns intraday time series (timestamp, open, high, low, close, volume) of the equity specified.
+The related REST API documentation is [here](https://www.alphavantage.co/documentation/#intraday)</description>
+		<type>TIME SERIES DATA</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+			</items>
+		</parameter>
+		<parameter name="outputsize">
+			<description>It is a optional value; compact and full are accepted with the following specifications: compact returns only the latest 100 data points in the intraday time series; full returns the full-length intraday time series. The "compact" option is recommended if you would like to reduce the data size of each API call.</description>
+			<mandatory>false</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>compact</item> <!-- Default Value -->
+				<item>full</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TIME_SERIES_DATA_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>Symbol</name>
+					<text>2. Symbol</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3. Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4. Interval</text>
+				</node>
+				<node>
+					<name>OutputSize</name>
+					<text>5. Output Size</text>
+				</node>	
+				<node>
+					<name>TimeZone</name>
+					<text>6. Time Zone</text>
+				</node>	
+			</metadata>
+			<timeseries name = "Time Series (1min)|Time Series (5min)|Time Series (15min)|Time Series (30min)|Time Series (60min)">
+				<node>
+					<name>open</name>
+					<text>1. open</text>
+				</node>
+				<node>
+					<name>high</name>
+					<text>2. high</text>
+				</node>
+				<node>
+					<name>low</name>
+					<text>3. low</text>
+				</node>
+				<node>
+					<name>close</name>
+					<text>4. close</text>
+				</node>
+				<node>
+					<name>volume</name>
+					<text>5. volume</text>
+				</node>
+			</timeseries>
+		</response>
+	</operation>
+	
+	<operation>
+		<name>TIME_SERIES_DAILY</name>
+		<description>This API returns daily time series (date, daily open, daily high, daily low, daily close, daily volume) of the equity specified, covering up to 20 years of historical data. The most recent data point is the current trading day. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#daily)</description>
+		<type>TIME SERIES DATA</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="outputsize">
+            <description>It is a optional value; compact and full are accepted with the following specifications: compact returns only the latest data points; full returns the full-length time series of up to 20 years of historical data. The "compact" option is recommended if you would like to reduce the data size of each API call.</description>
+			<mandatory>false</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>compact</item> <!-- Default Value -->
+				<item>full</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TIME_SERIES_DATA_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>Symbol</name>
+					<text>2. Symbol</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3. Last Refreshed</text>
+				</node>
+				<node>
+					<name>OutputSize</name>
+					<text>4. Output Size</text>
+				</node>	
+				<node>
+					<name>TimeZone</name>
+					<text>5. Time Zone</text>
+				</node>	
+			</metadata>
+			<timeseries name = "Time Series (Daily)">
+				<node>
+					<name>open</name>
+					<text>1. open</text>
+				</node>
+				<node>
+					<name>high</name>
+					<text>2. high</text>
+				</node>
+				<node>
+					<name>low</name>
+					<text>3. low</text>
+				</node>
+				<node>
+					<name>close</name>
+					<text>4. close</text>
+				</node>
+				<node>
+					<name>volume</name>
+					<text>5. volume</text>
+				</node>
+			</timeseries>
+		</response>
+	</operation>
+	
+	<operation>
+		<name>TIME_SERIES_DAILY_ADJUSTED</name>
+		<description>This API returns daily time series (date, daily open, daily high, daily low, daily close, daily split/dividend-adjusted close, daily volume, dividend amount, split coefficient) of the equity specified, covering up to 20 years of historical data. The most recent data point is the current trading day (updated realtime). The related REST API documentation is [here](https://www.alphavantage.co/documentation/#dailyadj)</description>
+		<type>TIME SERIES DATA</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="outputsize">
+            <description>It is a optional value; compact and full are accepted with the following specifications: ccompact returns only the latest 100 data points; full returns the full-length time series of up to 20 years of historical data. The "compact" option is recommended if you would like to reduce the data size of each API call.</description>
+			<mandatory>false</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>compact</item> <!-- Default Value -->
+				<item>full</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TIME_SERIES_DATA_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>Symbol</name>
+					<text>2. Symbol</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3. Last Refreshed</text>
+				</node>
+				<node>
+					<name>OutputSize</name>
+					<text>4. Output Size</text>
+				</node>	
+				<node>
+					<name>TimeZone</name>
+					<text>5. Time Zone</text>
+				</node>					
+			</metadata>
+			<timeseries name = "Time Series (Daily)">
+				<node>
+					<name>open</name>
+					<text>1. open</text>
+				</node>
+				<node>
+					<name>high</name>
+					<text>2. high</text>
+				</node>
+				<node>
+					<name>low</name>
+					<text>3. low</text>
+				</node>
+				<node>
+					<name>close</name>
+					<text>4. close</text>
+				</node>
+				<node>
+					<name>adjustedclose</name>
+					<text>5. adjusted close</text>
+				</node>
+				<node>
+					<name>volume</name>
+					<text>6. volume</text>
+				</node>				
+				<node>
+					<name>dividendamount</name>
+					<text>7. dividend amount</text>
+				</node>
+				<node>
+					<name>splitcoefficient</name>
+					<text>8. split coefficient</text>
+				</node>
+			</timeseries>
+		</response>
+	</operation>
+	
+	
+	<operation>
+		<name>TIME_SERIES_WEEKLY</name>
+		<description>This API returns weekly time series (last trading day of each week, weekly open, weekly high, weekly low, weekly close, weekly volume) of the equity specified, covering up to 20 years of historical data. The latest data point is the week that contains the current trading day (updated realtime). The related REST API documentation is [here](https://www.alphavantage.co/documentation/#weekly)</description>
+		<type>TIME SERIES DATA</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TIME_SERIES_DATA_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>Symbol</name>
+					<text>2. Symbol</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3. Last Refreshed</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>4. Time Zone</text>
+				</node>	
+			</metadata>
+			<timeseries name = "Weekly Time Series">
+				<node>
+					<name>open</name>
+					<text>1. open</text>
+				</node>
+				<node>
+					<name>high</name>
+					<text>2. high</text>
+				</node>
+				<node>
+					<name>low</name>
+					<text>3. low</text>
+				</node>
+				<node>
+					<name>close</name>
+					<text>4. close</text>
+				</node>
+				<node>
+					<name>volume</name>
+					<text>5. volume</text>
+				</node>				
+			</timeseries>
+		</response>
+	</operation>
+	
+		<operation>
+		<name>TIME_SERIES_WEEKLY_ADJUSTED</name>
+		<description>This API returns weekly adjusted time series (last trading day of each week, weekly open, weekly high, weekly low, weekly close, weekly adjusted close, weekly volume, weekly dividend) of the equity specified, covering up to 20 years of historical data. The latest data point is the cumulative prices and volume information for the week (or partial week) that contains the current trading day, updated realtime. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#weeklyadj)</description>
+		<type>TIME SERIES DATA</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TIME_SERIES_DATA_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>Symbol</name>
+					<text>2. Symbol</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3. Last Refreshed</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>4. Time Zone</text>
+				</node>	
+			</metadata>
+			<timeseries name = "Weekly Adjusted Time Series">
+				<node>
+					<name>open</name>
+					<text>1. open</text>
+				</node>
+				<node>
+					<name>high</name>
+					<text>2. high</text>
+				</node>
+				<node>
+					<name>low</name>
+					<text>3. low</text>
+				</node>
+				<node>
+					<name>close</name>
+					<text>4. close</text>
+				</node>
+				<node>
+					<name>adjustedclose</name>
+					<text>5. adjusted close</text>
+				</node>
+				<node>
+					<name>volume</name>
+					<text>6. volume</text>
+				</node>
+				<node>
+					<name>dividendamount</name>
+					<text>7. dividend amount</text>
+				</node>					
+			</timeseries>
+		</response>
+	</operation>
+	
+	
+	<operation>
+		<name>TIME_SERIES_MONTHLY</name>
+		<description>This API returns monthly time series (last trading day of each month, monthly open, monthly high, monthly low, monthly close, monthly volume) of the equity specified, covering up to 20 years of historical data. The latest data point is the month that contains the current trading day (updated realtime). The related REST API documentation is [here](https://www.alphavantage.co/documentation/#monthly)</description>
+		<type>TIME SERIES DATA</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TIME_SERIES_DATA_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>Symbol</name>
+					<text>2. Symbol</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3. Last Refreshed</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>4. Time Zone</text>
+				</node>
+			</metadata>
+			<timeseries name = "Monthly Time Series">
+				<node>
+					<name>open</name>
+					<text>1. open</text>
+				</node>
+				<node>
+					<name>high</name>
+					<text>2. high</text>
+				</node>
+				<node>
+					<name>low</name>
+					<text>3. low</text>
+				</node>
+				<node>
+					<name>close</name>
+					<text>4. close</text>
+				</node>
+				<node>
+					<name>volume</name>
+					<text>5. volume</text>
+				</node>
+			</timeseries>
+		</response>
+	</operation>
+	
+	<operation>
+		<name>BATCH_STOCK_QUOTES</name>
+		<description>The batch stock quotes API enables the querying of multiple stock quotes with a single API request, updated realtime. It may serve as a lightweight alternative to our core stock time series APIs above (which have richer content but are symbol-specific). Given the specifications of our data provider (IEX), we currently only offer US stock quotes during US market hours through this API. If you would like to query stocks, ETFs, and mutual funds traded on major global exchanges, please refer to our core stock time series APIs (Intraday, Daily, Daily Ajudsted, Weekly, Weekly Adjusted, Monthly, and Monthly Adjusted). The related REST API documentation is [here](https://www.alphavantage.co/documentation/#batchquotes)</description>
+		<type>TIME SERIES DATA</type>
+		<parameter name="symbols">
+			<description>The name of the equities</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>BATCH_STOCK_QUOTES_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>Notes</name>
+					<text>2. Notes</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>3. Time Zone</text>
+				</node>
+			</metadata>
+			<stockquotes>
+				<node>
+					<name>Symbol</name>
+					<text>1. symbol</text>
+				</node>
+				<node>
+					<name>Price</name>
+					<text>2. price</text>
+				</node>
+				<node>
+					<name>Volume</name>
+					<text>3. volume</text>
+				</node>
+				<node>
+					<name>TimeStamp</name>
+					<text>4. timestamp</text>
+				</node>
+			</stockquotes>
+		</response>
+	</operation>
+	
+	<operation>
+		<name>TIME_SERIES_MONTHLY_ADJUSTED</name>
+		<description>This API returns monthly adjusted time series (last trading day of each month, monthly open, monthly high, monthly low, monthly close, monthly adjusted close, monthly volume, monthly dividend) of the equity specified, covering up to 20 years of historical data. The latest data point is the cumulative prices and volume information for the month (or partial month) that contains the current trading day, updated realtime. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#monthlyadj)</description>
+		<type>TIME SERIES DATA</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TIME_SERIES_DATA_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>Symbol</name>
+					<text>2. Symbol</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3. Last Refreshed</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>4. Time Zone</text>
+				</node>
+			</metadata>
+			<timeseries name = "Monthly Adjusted Time Series">
+				<node>
+					<name>open</name>
+					<text>1. open</text>
+				</node>
+				<node>
+					<name>high</name>
+					<text>2. high</text>
+				</node>
+				<node>
+					<name>low</name>
+					<text>3. low</text>
+				</node>
+				<node>
+					<name>close</name>
+					<text>4. close</text>
+				</node>
+				<node>
+					<name>adjustedclose</name>
+					<text>5. adjusted close</text>
+				</node>
+				<node>
+					<name>volume</name>
+					<text>6. volume</text>
+				</node>
+				<node>
+					<name>dividendamount</name>
+					<text>7. dividend amount</text>
+				</node>	
+			</timeseries>
+		</response>
+	</operation>
+	
+	
+	<!-- Technical Indicators -->
+	
+	<operation>
+		<name>SMA</name>
+		<description>This API returns the simple moving average (SMA) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#sma)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            		<description>Number of data points used to calculate each moving average value</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            		<description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			
+			<technicalindicator name="Technical Analysis: SMA">
+				<node>
+					<name>SMA</name>
+					<text>SMA</text>
+				</node>
+			</technicalindicator>
+		</response>
+	</operation>
+	
+	<operation>
+		<name>EMA</name>
+		<description>This API returns the exponential moving average (EMA) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#ema)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each moving average value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: EMA">
+				<node>
+					<name>EMA</name>
+					<text>EMA</text>
+				</node>
+			</technicalindicator>
+		</response>
+	</operation>
+	
+	
+	<operation>
+		<name>WMA</name>
+		<description>This API returns the weighted moving average (WMA) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#wma)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each moving average value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: WMA">
+				<node>
+					<name>WMA</name>
+					<text>WMA</text>
+				</node>
+			</technicalindicator>
+		</response>
+	</operation>
+	
+	<operation>
+		<name>DEMA</name>
+		<description>This API returns the double exponential moving average (DEMA) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#dema)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each moving average value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>	
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: DEMA">
+				<node>
+					<name>DEMA</name>
+					<text>DEMA</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>TEMA</name>
+		<description>This API returns the triple exponential moving average (TEMA) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#tema)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each moving average value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: TEMA">
+				<node>
+					<name>TEMA</name>
+					<text>TEMA</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>TRIMA</name>
+		<description>This API returns the triangular moving average (TRIMA) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#trima)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each moving average value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: TRIMA">
+				<node>
+					<name>TRIMA</name>
+					<text>TRIMA</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>KAMA</name>
+		<description>This API returns the Kaufman adaptive moving average (KAMA) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#kama)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each moving average value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: KAMA">
+				<node>
+					<name>KAMA</name>
+					<text>KAMA</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+		
+	<operation>
+		<name>MAMA</name>
+		<description>This API returns the MESA adaptive moving average (MAMA) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#mama)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<parameter name="fastlimit">
+            <description>It is a optional value; positive floats are accepted. By default, fastlimit=0.01</description>
+			<mandatory>false</mandatory>
+			<datatype>float</datatype>
+		</parameter>
+		<parameter name="slowlimit">
+            <description>It is a optional value; positive floats are accepted. By default, slowlimit=0.01</description>
+			<mandatory>false</mandatory>
+			<datatype>float</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>FastLimit</name>
+					<text>5.1: Fast Limit</text>
+				</node>
+				<node>
+					<name>SlowLimit</name>
+					<text>5.2: Slow Limit</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: MAMA">
+				<node>
+					<name>MAMA</name>
+					<text>MAMA</text>
+				</node>
+				<node>
+					<name>FAMA</name>
+					<text>FAMA</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>T3</name>
+		<description>This API returns the triple exponential moving average (T3) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#t3)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each moving average value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>VolumeFactor</name>
+					<text>6: Volume Factor</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>7: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>8: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: T3">
+				<node>
+					<name>T3</name>
+					<text>T3</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>MACD</name>
+		<description>This API returns the moving average convergence / divergence (MACD) values). The related REST API documentation is [here](https://www.alphavantage.co/documentation/#macd)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<parameter name="fastperiod"> <!-- default value = 12 !-->
+            <description>It is a optional value; positive integers are accepted. By default, fastperiod=12</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="slowperiod"> <!-- default value = 26 !-->
+            <description>It is a optional value; positive integers are accepted. By default, slowperiod=26</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="signalperiod"> <!-- default value = 9 !-->
+            <description>It is a optional value; positive integers are accepted. By default, signalperiod=9</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>FastPeriod</name>
+					<text>5.1: Fast Period</text>
+				</node>
+				<node>
+					<name>SlowPeriod</name>
+					<text>5.2: Slow Period</text>
+				</node>
+				<node>
+					<name>SignalPeriod</name>
+					<text>5.3: SignalPeriod</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: MACD">
+				<node>
+					<name>MACD_Hist</name>
+					<text>MACD_Hist</text>
+				</node>
+				<node>
+					<name>MACD_Signal</name>
+					<text>MACD_Signal</text>
+				</node>
+				<node>
+					<name>MACD</name>
+					<text>MACD</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	
+	<operation>
+		<name>MACDEXT</name>
+		<description>This API returns the moving average convergence / divergence values with controllable moving average type. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#macdext)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<parameter name="fastperiod"> <!-- default value = 12 !-->
+            <description>It is a optional value; positive integers are accepted. By default, fastperiod=12</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="slowperiod"> <!-- default value = 26 !-->
+            <description>It is a optional value; positive integers are accepted. By default, slowperiod=26</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="signalperiod"> <!-- default value = 9 !-->
+            <description>It is a optional value; positive integers are accepted. By default, signalperiod=9</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="fastmatype">
+            <description>Moving average type for the faster moving average, it is a optional value. By default: fastmatype=0, check the Alphavantage documentation for the mapping. </description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype><!-- <datatype>int</datatype> -->
+			<items>
+				<item>-1</item> <!--  Simple Moving Average (SMA) -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>
+		<parameter name="slowmatype">
+            <description>Moving average type for the slower moving average, it is a optional value. By default: slowmatype=0, check the Alphavantage documentation for the mapping. </description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype><!-- <datatype>int</datatype> -->
+			<items>
+				<item>-1</item> <!--  None -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>
+		<parameter name="signalmatype">
+            <description>Moving average type for the signal moving average, it is a optional value. By default: signalmatype=0, check the Alphavantage documentation for the mapping. </description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype><!-- <datatype>int</datatype> -->
+			<items>
+				<item>-1</item> <!--  Simple Moving Average (SMA) -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>	
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>FastPeriod</name>
+					<text>5.1: Fast Period</text>
+				</node>
+				<node>
+					<name>SlowPeriod</name>
+					<text>5.2: Slow Period</text>
+				</node>
+				<node>
+					<name>SignalPeriod</name>
+					<text>5.3: SignalPeriod</text>
+				</node>
+				<node>
+					<name>FastMAType</name>
+					<text>5.4: Fast MA Type</text>
+				</node>
+				<node>
+					<name>SlowMAType</name>
+					<text>5.5: SlowMAType</text>
+				</node>
+				<node>
+					<name>SignalMAType</name>
+					<text>5.6: Signal MA Type</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: MACDEXT">
+				<node>
+					<name>MACD_Hist</name>
+					<text>MACD_Hist</text>
+				</node>
+				<node>
+					<name>MACD_Signal</name>
+					<text>MACD_Signal</text>
+				</node>
+				<node>
+					<name>MACD</name>
+					<text>MACD</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	
+	<operation>
+		<name>STOCH</name>
+		<description>This API returns the stochastic oscillator (STOCH) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#stoch)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="fastkperiod"> <!-- default value = 5 !-->
+            <description>It is a optional value; positive integers are accepted. By default, fastkperiod=5</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="slowkperiod"> <!-- default value = 3 !-->
+            <description>It is a optional value; positive integers are accepted. By default, slowkperiod=3</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="slowdperiod"> <!-- default value = 3 !-->
+            <description>It is a optional value; positive integers are accepted. By default, slowdperiod=3</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="slowkmatype">
+            <description>Moving average type for the slowk moving average, it is a optional value. By default: slowkmatype=0, check the Alphavantage documentation for the mapping. </description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype><!-- <datatype>int</datatype> -->
+			<items>
+				<item>-1</item> <!--  None -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>
+		<parameter name="slowdmatype">
+            <description>Moving average type for the slowd moving average, it is a optional value. By default: slowdmatype=0, check the Alphavantage documentation for the mapping. </description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype><!-- <datatype>int</datatype> -->
+			<items>
+				<item>-1</item> <!--  Simple Moving Average (SMA) -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>FastKPeriod</name>
+					<text>5.1: FastK Period</text>
+				</node>
+				<node>
+					<name>SlowKPeriod</name>
+					<text>5.2: SlowK Period</text>
+				</node>
+				<node>
+					<name>SlowKMAType</name>
+					<text>5.3: SlowK MA Type</text>
+				</node>
+				<node>
+					<name>SlowDPeriod</name>
+					<text>5.4: SlowD Period</text>
+				</node>
+				<node>
+					<name>SlowDMAType</name>
+					<text>5.5: SlowD MA Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: STOCH">
+				<node>
+					<name>SlowK</name>
+					<text>SlowK</text>
+				</node>
+				<node>
+					<name>SlowD</name>
+					<text>SlowD</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	
+	
+	<operation>
+		<name>STOCHF</name>
+		<description>This API returns the stochastic fast (STOCHF) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#stochf)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>>
+			</items>
+		</parameter>
+		<parameter name="fastkperiod"> <!-- default value = 5 !-->
+            <description>It is a optional value; positive integers are accepted. By default, fastkperiod=5</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="fastdperiod"> <!-- default value = 3 !-->
+            <description>It is a optional value; positive integers are accepted. By default, fastdperiod=3</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="fastdmatype"> <!-- default value = 0 !-->
+            <description>Moving average type for the fastd moving average, it is a optional value. By default: fastdmatype=0, check the Alphavantage documentation for the mapping. </description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype><!-- <datatype>int</datatype> -->
+			<items>
+				<item>-1</item> <!--  Simple Moving Average (SMA) -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>FastKPeriod</name>
+					<text>5.1: FastK Period</text>
+				</node>
+				<node>
+					<name>FastDPeriod</name>
+					<text>5.2: FastD Period</text>
+				</node>
+				<node>
+					<name>FastDMAType</name>
+					<text>5.3: FastD MA Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: STOCHF">
+				<node>
+					<name>FastK</name>
+					<text>FastK</text>
+				</node>
+				<node>
+					<name>FastD</name>
+					<text>FastD</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	
+	<operation>
+		<name>RSI</name>
+		<description>This API returns the relative strength index (RSI) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#rsi)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description> Number of data points used to calculate each RSI value</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: RSI">
+				<node>
+					<name>RSI</name>
+					<text>RSI</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	
+	
+	<operation>
+		<name>STOCHRSI</name>
+		<description>This API returns the stochastic relative strength index (STOCHRSI) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#stochrsi)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each STOCHRSI value</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<parameter name="fastkperiod"> <!-- default value = 5 !-->
+            <description>It is a optional value; positive integers are accepted. By default, fastkperiod=5</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="fastdperiod"> <!-- default value = 3 !-->
+            <description>It is a optional value; positive integers are accepted. By default, fastkperiod=5</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="fastdmatype"> <!-- default value = 0 !-->
+            <description>Moving average type for the fastd moving average, it is a optional value. By default: fastdmatype=0, check the Alphavantage documentation for the mapping. </description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+			<items>
+				<item>-1</item> <!--  None -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>FastKPeriod</name>
+					<text>6.1: FastK Period</text>
+				</node>
+				<node>
+					<name>FastDPeriod</name>
+					<text>6.2: FastD Period</text>
+				</node>
+				<node>
+					<name>FastDMAType</name>
+					<text>6.3: FastD MA Type</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>7: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>8: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: STOCHRSI">
+				<node>
+					<name>FastK</name>
+					<text>FastK</text>
+				</node>
+				<node>
+					<name>FastD</name>
+					<text>FastD</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>WILLR</name>
+		<description>This API returns the Williams' %R (WILLR) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#willr)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each WILLR value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: WILLR">
+				<node>
+					<name>WILLR</name>
+					<text>WILLR</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>ADX</name>
+		<description>This API returns the average directional movement index (ADX) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#adx)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each ADX value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: ADX">
+				<node>
+					<name>ADX</name>
+					<text>ADX</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>	
+	
+	<operation>
+		<name>ADXR</name>
+		<description>This API returns the average directional movement index rating (ADXR) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#adxr)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each ADXR value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: ADXR">
+				<node>
+					<name>ADXR</name>
+					<text>ADXR</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>	
+
+	<operation>
+		<name>APO</name>
+		<description>This API returns the absolute price oscillator (APO) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#apo)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<parameter name="fastperiod"> <!-- default value = 12 !-->
+            <description>It is a optional value; positive integers are accepted. By default, fastperiod=12</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="slowperiod"> <!-- default value = 26 !-->
+            <description>It is a optional value; positive integers are accepted. By default, slowperiod=26</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="matype"> <!-- default value = 0 !-->
+            <description>Moving average type, it is a optional value. By default: matype=0, check the Alphavantage documentation for the mapping. </description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+			<items>
+				<item>-1</item> <!--  None -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>FastPeriod</name>
+					<text>5.1: FastPeriod</text>
+				</node>
+				<node>
+					<name>SlowPeriod</name>
+					<text>5.2: SlowPeriod</text>
+				</node>
+				<node>
+					<name>MAType</name>
+					<text>5.3: MA Type</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: APO">
+				<node>
+					<name>APO</name>
+					<text>APO</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>PPO</name>
+		<description>This API returns the percentage price oscillator (PPO) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#ppo)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<parameter name="fastperiod"> <!-- default value = 12 !-->
+            <description>It is a optional value; positive integers are accepted. By default, fastperiod=12</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="slowperiod"> <!-- default value = 26 !-->
+            <description>It is a optional value; positive integers are accepted. By default, slowperiod=26</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="matype"> <!-- default value = 0 !-->
+            <description>Moving average type, it is a optional value. By default: matype=0, check the Alphavantage documentation for the mapping. </description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+			<items>
+				<item>-1</item> <!--  None -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>FastPeriod</name>
+					<text>5.1: FastPeriod</text>
+				</node>
+				<node>
+					<name>SlowPeriod</name>
+					<text>5.2: SlowPeriod</text>
+				</node>
+				<node>
+					<name>MAType</name>
+					<text>5.3: MA Type</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: PPO">
+				<node>
+					<name>PPO</name>
+					<text>PPO</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>MOM</name>
+		<description>his API returns the momentum (MOM) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#mom)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each MOM value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: MOM">
+				<node>
+					<name>MOM</name>
+					<text>MOM</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	
+	<operation>
+		<name>BOP</name>
+		<description>This API returns the balance of power (BOP) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#bop)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>5: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: BOP">
+				<node>
+					<name>BOP</name>
+					<text>BOP</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>CCI</name>
+		<description>This API returns the commodity channel index (CCI) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#cci)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each CCI value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: CCI">
+				<node>
+					<name>CCI</name>
+					<text>CCI</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>	
+	
+	
+	<operation>
+		<name>CMO</name>
+		<description>This API returns the Chande momentum oscillator (CMO) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#cmo)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each CMO value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: CMO">
+				<node>
+					<name>CMO</name>
+					<text>CMO</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>ROC</name>
+		<description>This API returns the rate of change (ROC) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#roc)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each ROC value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: ROC">
+				<node>
+					<name>ROC</name>
+					<text>ROC</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>ROCR</name>
+		<description>This API returns the rate of change ratio (ROCR) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#rocr)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each ROCR value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: ROCR">
+				<node>
+					<name>ROCR</name>
+					<text>ROCR</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+
+	<operation>
+		<name>AROON</name>
+		<description>This API returns the Aroon (AROON) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#aroon)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each AROON value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: AROON">
+				<node>
+					<name>AroonDown</name>
+					<text>Aroon Down</text>
+				</node>
+				<node>
+					<name>AroonUp</name>
+					<text>Aroon Up</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+
+	<operation>
+		<name>AROONOSC</name>
+		<description>This API returns the Aroon oscillator (AROONOSC) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#aroonosc)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each AROONOSC value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: AROONOSC">
+				<node>
+					<name>AROONOSC</name>
+					<text>AROONOSC</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+
+	<operation>
+		<name>MFI</name>
+		<description>This API returns the money flow index (MFI) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#mfi)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each MFI value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: MFI">
+				<node>
+					<name>MFI</name>
+					<text>MFI</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>TRIX</name>
+		<description>This API returns the 1-day rate of change of a triple smooth exponential moving average (TRIX) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#trix)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each TRIX value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: TRIX">
+				<node>
+					<name>TRIX</name>
+					<text>TRIX</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>ULTOSC</name>
+		<description>This API returns the ultimate oscillator (ULTOSC) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#ultosc)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="timeperiod1"> <!-- default value = 7 !-->
+            <description>The first time period for the indicator. It is a optional value; positive integers are accepted. By default, timeperiod1=7</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="timeperiod2"> <!-- default value = 14 !-->
+            <description>The second time period for the indicator. It is a optional value; positive integers are accepted. By default, timeperiod2=14</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="timeperiod3"> <!-- default value = 28 !-->
+            <description>The third time period for the indicator. It is a optional value; positive integers are accepted. By default, timeperiod3=28</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod1</name>
+					<text>5.1: Time Period 1</text>
+				</node>
+				<node>
+					<name>TimePeriod2</name>
+					<text>5.2: Time Period 2</text>
+				</node>
+				<node>
+					<name>TimePeriod3</name>
+					<text>5.3: Time Period 3</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: ULTOSC">
+				<node>
+					<name>ULTOSC</name>
+					<text>ULTOSC</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>DX</name>
+		<description>This API returns the directional movement index (DX) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#dx)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each DX value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: DX">
+				<node>
+					<name>DX</name>
+					<text>DX</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>MINUS_DI</name>
+		<description>This API returns the minus directional indicator (MINUS_DI) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#minusdi)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each MINUS_DI value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: MINUS_DI">
+				<node>
+					<name>MINUS_DI</name>
+					<text>MINUS_DI</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>PLUS_DI</name>
+		<description>This API returns the plus directional indicator (PLUS_DI) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#plusdi)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each PLUS_DI value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: PLUS_DI">
+				<node>
+					<name>PLUS_DI</name>
+					<text>PLUS_DI</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>MINUS_DM</name>
+		<description>This API returns the minus directional movement (MINUS_DM) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#minusdm)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each MINUS_DM value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: MINUS_DM">
+				<node>
+					<name>MINUS_DM</name>
+					<text>MINUS_DM</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>PLUS_DM</name>
+		<description>This API returns the plus directional movement (PLUS_DM) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#plusdm)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each PLUS_DM value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: PLUS_DM">
+				<node>
+					<name>PLUS_DM</name>
+					<text>PLUS_DM</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>BBANDS</name>
+		<description>This API returns the Bollinger bands (BBANDS) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#bbands)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each BBANDS value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<parameter name="nbdevup"> <!-- default value = 2 !-->
+            <description>The standard deviation multiplier of the upper band. It is a optional value; positive integers are accepted. By default, nbdevup=2</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="nbdevdn"> <!-- default value = 2 !-->
+            <description>The standard deviation multiplier of the lower band. It is a optional value; positive integers are accepted. By default, nbdevdn=2</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="matype"> <!-- default value = 0 !-->
+<description>Moving average type of the time series. It is a optional value; positive integers are accepted. By default, matype=0, check the Alphavantage documentation for the mapping.</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+			<items>
+				<item>-1</item> <!--  None -->
+				<item>0</item> <!--  Simple Moving Average (SMA) -->
+				<item>1</item> <!--  Exponential Moving Average (EMA) -->
+				<item>2</item> <!--  Weighted Moving Average (WMA) -->
+				<item>3</item> <!--  Double Exponential Moving Average (DEMA) -->
+				<item>4</item> <!--  Triple Exponential Moving Average (TEMA) -->
+				<item>5</item> <!--  Triangular Moving Average (TRIMA) -->
+				<item>6</item> <!--  T3 Moving Average -->
+				<item>7</item> <!--  Kaufman Adaptive Moving Average (KAMA) -->
+				<item>8</item> <!--  MESA Adaptive Moving Average (MAMA) -->
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>DeviationUpper</name>
+					<text>6.1: Deviation multiplier for upper band Type</text>
+				</node>
+				<node>
+					<name>DeviationLower</name>
+					<text>6.2: Deviation multiplier for lower band</text>
+				</node>
+				<node>
+					<name>MAType</name>
+					<text>6.3: MA Type</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>7: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>8: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: BBANDS">
+				<node>
+					<name>RealLowerBand</name>
+					<text>Real Lower Band</text>
+				</node>
+				<node>
+					<name>RealUpperBand</name>
+					<text>Real Upper Band</text>
+				</node>
+				<node>
+					<name>RealMiddleBand</name>
+					<text>Real Middle Band</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	
+	<operation>
+		<name>MIDPOINT</name>
+		<description>This API returns the midpoint (MIDPOINT) values. MIDPOINT = (highest value + lowest value)/2. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#midpoint)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each MIDPOINT value. </description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>6: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: MIDPOINT">
+				<node>
+					<name>MIDPOINT</name>
+					<text>MIDPOINT</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>MIDPRICE</name>
+		<description>This API returns the midpoint price (MIDPRICE) values. MIDPRICE = (highest high + lowest low)/2. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#midprice)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each MIDPRICE value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: MIDPRICE">
+				<node>
+					<name>MIDPRICE</name>
+					<text>MIDPRICE</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>SAR</name>
+		<description>This API returns the parabolic SAR (SAR) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#sar)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="acceleration">
+            <description>The acceleration factor. It is a optional value; positive float are accepted. By default, acceleration=0.01</description>
+			<mandatory>false</mandatory>
+			<datatype>float</datatype>
+		</parameter>
+		<parameter name="maximum">
+            <description>The maximum value for the accelleration. It is a optional value; positive float are accepted. By default, maximum=0.20</description>
+			<mandatory>false</mandatory>
+			<datatype>float</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>Acceleration</name>
+					<text>5.1: Acceleration</text>
+				</node>
+				<node>
+					<name>Maximum</name>
+					<text>5.2: Maximum</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: SAR">
+				<node>
+					<name>SAR</name>
+					<text>SAR</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>TRANGE</name>
+		<description>This API returns the true range (TRANGE) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#trange)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>5: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: TRANGE">
+				<node>
+					<name>TRANGE</name>
+					<text>TRANGE</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>ATR</name>
+		<description>This API returns the average true range (ATR) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#atr)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each ATR value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: ATR">
+				<node>
+					<name>ATR</name>
+					<text>ATR</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>NATR</name>
+		<description>This API returns the normalized average true range (NATR) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#natr)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="time_period">
+            <description>Number of data points used to calculate each NATR value.</description>
+			<mandatory>true</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimePeriod</name>
+					<text>5: Time Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: NATR">
+				<node>
+					<name>NATR</name>
+					<text>NATR</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>AD</name>
+		<description>This API returns the Chaikin A/D line (AD) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#ad)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>5: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: Chaikin A/D">
+				<node>
+					<name>ChaikinAD</name>
+					<text>Chaikin A/D</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>ADOSC</name>
+		<description>This API returns the Chaikin A/D oscillator (ADOSC) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#adosc)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="fastperiod">
+            <description>It is a optional value; positive integers are accepted. By default, fastperiod=3</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<parameter name="slowperiod">
+            <description>It is a optional value; positive integers are accepted. By default, slowperiod=10</description>
+			<mandatory>false</mandatory>
+			<datatype>int</datatype>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>FastKPeriod</name>
+					<text>5.1: FastK Perio</text>
+				</node>
+				<node>
+					<name>SlowKPeriod</name>
+					<text>5.2: SlowK Period</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: ADOSC">
+				<node>
+					<name>ADOSC</name>
+					<text>ADOSC</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>OBV</name>
+		<description>This API returns the on balance volume (OBV) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#obv)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>5: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: OBV">
+				<node>
+					<name>OBV</name>
+					<text>OBV</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>HT_TRENDLINE</name>
+		<description>This API returns the Hilbert transform, instantaneous trendline (HT_TRENDLINE) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#httrendline)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>5: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: HT_TRENDLINE">
+				<node>
+					<name>HT_TRENDLINE</name>
+					<text>HT_TRENDLINE</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>HT_SINE</name>
+		<description>This API returns the Hilbert transform, sine wave (HT_SINE) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#htsine)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>5: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: HT_SINE">
+				<node>
+					<name>SINE</name>
+					<text>SINE</text>
+				</node>
+				<node>
+					<name>LEADSINE</name>
+					<text>LEAD SINE</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>HT_TRENDMODE</name>
+		<description>This API returns the Hilbert transform, trend vs cycle mode (HT_TRENDMODE) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#httrendmode)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>5: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: HT_TRENDMODE">
+				<node>
+					<name>TRENDMODE</name>
+					<text>TRENDMODE</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>HT_DCPERIOD</name>
+		<description>This API returns the Hilbert transform, dominant cycle period (HT_DCPERIOD) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#htdcperiod)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>5: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: HT_DCPERIOD">
+				<node>
+					<name>DCPERIOD</name>
+					<text>DCPERIOD</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>HT_DCPHASE</name>
+		<description>This API returns the Hilbert transform, dominant cycle phase (HT_DCPHASE) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#htdcphase)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>5: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: HT_DCPHASE">
+				<node>
+					<name>HT_DCPHASE</name>
+					<text>HT_DCPHASE</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<operation>
+		<name>HT_PHASOR</name>
+		<description>This API returns the Hilbert transform, phasor components (HT_PHASOR) values. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#htphasor)</description>
+		<type>TECHNICAL INDICATORS</type>
+		<parameter name="symbol">
+			<description>The name of the equity</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="interval">
+			<description>The time interval between two consecutive data points in the time series.</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>1min</item>
+				<item>5min</item>
+				<item>15min</item>
+				<item>30min</item>
+				<item>60min</item>
+				<item>daily</item>
+				<item>weekly</item>
+				<item>monthly</item>
+			</items>
+		</parameter>
+		<parameter name="series_type">
+            <description>The price type in the time series. The types supported are: close, open, high, low</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+			<items>
+				<item>none</item>
+				<item>close</item>
+				<item>open</item>
+				<item>high</item>
+				<item>low</item>
+			</items>
+		</parameter>
+		<response>
+			<typeresponse>TECHNICAL_INDICATOR_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Symbol</name>
+					<text>1: Symbol</text>
+				</node>
+				<node>
+					<name>Indicator</name>
+					<text>2: Indicator</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>3: Last Refreshed</text>
+				</node>
+				<node>
+					<name>Interval</name>
+					<text>4: Interval</text>
+				</node>
+				<node>
+					<name>SeriesType</name>
+					<text>5: Series Type</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>6: Time Zone</text>
+				</node>
+			</metadata>
+			<technicalindicator name="Technical Analysis: HT_PHASOR">
+				<node>
+					<name>PHASE</name>
+					<text>PHASE</text>
+				</node>
+				<node>
+					<name>QUADRATURE</name>
+					<text>QUADRATURE</text>
+				</node>
+			</technicalindicator>
+		</response>		
+	</operation>
+	
+	<!--  Sector Performances -->
+
+	<operation>
+		<name>SECTOR</name>
+		<description>This API returns the realtime and historical sector performances calculated from SandP500 incumbents. The related REST API documentation is [here](https://www.alphavantage.co/documentation/#sector)</description>
+		<type>SECTOR</type>
+		<response>
+		    <typeresponse>SECTOR_PERFORMANCES_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>Information</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>Last Refreshed</text>
+				</node>
+			</metadata>
+			<sectorperformances name="SectorPerformance">
+				<rank name="RankA" text="Rank A: Real-Time Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>RealEstate</name>
+						<text>Real Estate</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+
+				<rank name="RankB" text="Rank B: 1 Day Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>RealEstate</name>
+						<text>Real Estate</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+
+				<rank name="RankC" text="Rank C: 5 Day Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>RealEstate</name>
+						<text>Real Estate</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+
+				<rank name="RankD" text="Rank D: 1 Month Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>RealEstate</name>
+						<text>Real Estate</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+
+				<rank name="RankE" text="Rank E: 3 Month Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>RealEstate</name>
+						<text>Real Estate</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+
+				<rank name="RankF" text="Rank F: Year-to-Date (YTD) Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>RealEstate</name>
+						<text>Real Estate</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+
+				<rank name="RankG" text="Rank G: 1 Year Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>RealEstate</name>
+						<text>Real Estate</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+
+				<rank name="RankH" text="Rank H: 3 Year Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+
+				<rank name="RankI" text="Rank I: 5 Year Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+
+				<rank name="RankJ" text="Rank J: 10 Year Performance">
+					<node>
+						<name>Financials</name>
+						<text>Financials</text>
+					</node>
+					<node>
+						<name>Utilities</name>
+						<text>Utilities</text>
+					</node>
+					<node>
+						<name>HealthCare</name>
+						<text>Health Care</text>
+					</node>
+					<node>
+						<name>Industrials</name>
+						<text>Industrials</text>
+					</node>
+					<node>
+						<name>Materials</name>
+						<text>Materials</text>
+					</node>
+					<node>
+						<name>TelecommunicationServices</name>
+						<text>Telecommunication Services</text>
+					</node>
+					<node>
+						<name>ConsumerDiscretionary</name>
+						<text>Consumer Discretionary</text>
+					</node>
+					<node>
+						<name>ConsumerStaples</name>
+						<text>Consumer Staples</text>
+					</node>
+					<node>
+						<name>InformationTechnology</name>
+						<text>Information Technology</text>
+					</node>
+					<node>
+						<name>Energy</name>
+						<text>Energy</text>
+					</node>
+				</rank>
+			</sectorperformances>
+		</response>
+	</operation>
+	<operation>
+		<name>CURRENCY_EXCHANGE_RATE</name>
+		<description>This API returns the realtime exchange rate for any pair of digital currency (e.g., Bitcoin) or physical currency (e.g., USD). The related REST API documentation is [here](https://www.alphavantage.co/documentation/#currency-exchange)</description>
+		<type>FX</type>
+		<parameter name="from_currency">
+			<description>The currency you would like to get the exchange rate for. It can either be a physical currency or digital/crypto currency</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="to_currency">
+			<description>The destination currency for the exchange rate. It can either be a physical currency or digital/crypto currency</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>FX_RESPONSE</typeresponse>
+			<currencyexchange name="Realtime Currency Exchange Rate">
+				<node>
+					<name>FromCurrencyCode</name>
+					<text>1. From_Currency Code</text>
+				</node>
+				<node>
+					<name>FromCurrencyName</name>
+					<text>2. From_Currency Name</text>
+				</node>
+				<node>
+					<name>ToCurrencyCode</name>
+					<text>3. To_Currency Code</text>
+				</node>
+				<node>
+					<name>ToCurrencyName</name>
+					<text>4. To_Currency Name</text>
+				</node>
+				<node>
+					<name>ExchangeRate</name>
+					<text>5. Exchange Rate</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>6. Last Refreshed</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7. Time Zone</text>
+				</node>
+			</currencyexchange>
+		</response>		
+	</operation>
+	
+	
+	<operation>
+		<name>DIGITAL_CURRENCY_INTRADAY</name>
+		<description>This API returns the realtime intraday time series (in 5-minute intervals) for any digital currency (e.g., BTC) traded on a specific market (e.g., CNY/Chinese Yuan). Prices and volumes are quoted in both the market-specific currency and USD.
+The related REST API documentation is [here](https://www.alphavantage.co/documentation/#currency-intraday)</description>
+		<type>DIGITAL_CRYPTO_TIME_SERIES</type>
+		<parameter name="symbol">
+			<description>The digital/crypto currency of your choice</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="market">
+			<description>The exchange market of your choice</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>DIGITAL_CRYPTO_TIME_SERIES_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>DigitalCurrencyCode</name>
+					<text>2. Digital Currency Code</text>
+				</node>
+				<node>
+					<name>DigitalCurrencyName</name>
+					<text>3. Digital Currency Name</text>
+				</node>
+				<node>
+					<name>MarketCode</name>
+					<text>4. Market Code</text>
+				</node>
+				<node>
+					<name>MarketName</name>
+					<text>5. Market Name</text>
+				</node>	
+				<node>
+					<name>Interval</name>
+					<text>6. Interval</text>
+				</node>
+				<node>
+					<name>LastRefreshed</name>
+					<text>7. Last Refreshed</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>8. Time Zone</text>
+				</node>
+			</metadata>
+			<timeseries name = "Time Series (Digital Currency Intraday)">
+				<node>
+					<name>Price</name>
+					<text>Price (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>PriceUSD</name>
+					<text>1b. price (USD)</text>
+				</node>
+				<node>
+					<name>Volume</name>
+					<text>2. volume</text>
+				</node>
+				<node>
+					<name>MarketCapUSD</name>
+					<text>3. market cap (USD)</text>
+				</node>
+			</timeseries>
+		</response>
+	</operation>
+	
+	<operation>
+		<name>DIGITAL_CURRENCY_DAILY</name>
+		<description>This API returns the daily historical time series for a digital currency (e.g., BTC) traded on a specific market (e.g., CNY/Chinese Yuan), refreshed daily at midnight (UTC). Prices and volumes are quoted in both the market-specific currency and USD.
+The related REST API documentation is [here](https://www.alphavantage.co/documentation/#currency-daily)</description>
+		<type>DIGITAL_CRYPTO_TIME_SERIES</type>
+		<parameter name="symbol">
+			<description>The digital/crypto currency of your choice</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="market">
+			<description>The exchange market of your choice</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>DIGITAL_CRYPTO_TIME_SERIES_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>DigitalCurrencyCode</name>
+					<text>2. Digital Currency Code</text>
+				</node>
+				<node>
+					<name>DigitalCurrencyName</name>
+					<text>3. Digital Currency Name</text>
+				</node>
+				<node>
+					<name>MarketCode</name>
+					<text>4. Market Code</text>
+				</node>
+				<node>
+					<name>MarketName</name>
+					<text>5. Market Name</text>
+				</node>	
+				<node>
+					<name>LastRefreshed</name>
+					<text>6. Last Refreshed</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7. Time Zone</text>
+				</node>
+			</metadata>
+			<timeseries name = "Time Series (Digital Currency Daily)">
+				<node>
+					<name>Open</name>
+					<text>Open (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>OpenUSD</name>
+					<text>1b. open (USD)</text>
+				</node>
+				<node>
+					<name>High</name>
+					<text>High (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>HighUSD</name>
+					<text>2b. high (USD)</text>
+				</node>
+				<node>
+					<name>Low</name>
+					<text>Low (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>LowUSD</name>
+					<text>3b. low (USD)</text>
+				</node>
+				<node>
+					<name>Close</name>
+					<text>Close (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>CloseUSD</name>
+					<text>4b. close (USD)</text>
+				</node>	
+				<node>
+					<name>Volume</name>
+					<text>5. volume</text>
+				</node>				
+				<node>
+					<name>MarketCapUSD</name>
+					<text>6. market cap (USD)</text>
+				</node>
+			</timeseries>
+		</response>
+	</operation>
+	
+	<operation>
+		<name>DIGITAL_CURRENCY_WEEKLY</name>
+		<description>This API returns the weekly historical time series for a digital currency (e.g., BTC) traded on a specific market (e.g., CNY/Chinese Yuan), refreshed daily at midnight (UTC). Prices and volumes are quoted in both the market-specific currency and USD.
+The related REST API documentation is [here](https://www.alphavantage.co/documentation/#currency-weekly)</description>
+		<type>DIGITAL_CRYPTO_TIME_SERIES</type>
+		<parameter name="symbol">
+			<description>The digital/crypto currency of your choice</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="market">
+			<description>The exchange market of your choice</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>DIGITAL_CRYPTO_TIME_SERIES_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>DigitalCurrencyCode</name>
+					<text>2. Digital Currency Code</text>
+				</node>
+				<node>
+					<name>DigitalCurrencyName</name>
+					<text>3. Digital Currency Name</text>
+				</node>
+				<node>
+					<name>MarketCode</name>
+					<text>4. Market Code</text>
+				</node>
+				<node>
+					<name>MarketName</name>
+					<text>5. Market Name</text>
+				</node>	
+				<node>
+					<name>LastRefreshed</name>
+					<text>6. Last Refreshed</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7. Time Zone</text>
+				</node>
+			</metadata>
+			<timeseries name = "Time Series (Digital Currency Weekly)">
+				<node>
+					<name>Open</name>
+					<text>Open (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>OpenUSD</name>
+					<text>1b. open (USD)</text>
+				</node>
+				<node>
+					<name>High</name>
+					<text>High (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>HighUSD</name>
+					<text>2b. high (USD)</text>
+				</node>
+				<node>
+					<name>Low</name>
+					<text>Low (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>LowUSD</name>
+					<text>3b. low (USD)</text>
+				</node>
+				<node>
+					<name>Close</name>
+					<text>Close (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>CloseUSD</name>
+					<text>4b. close (USD)</text>
+				</node>	
+				<node>
+					<name>Volume</name>
+					<text>5. volume</text>
+				</node>				
+				<node>
+					<name>MarketCapUSD</name>
+					<text>6. market cap (USD)</text>
+				</node>
+			</timeseries>
+		</response>
+	</operation>
+	
+	<operation>
+		<name>DIGITAL_CURRENCY_MONTHLY</name>
+		<description>This API returns the monthly historical time series for a digital currency (e.g., BTC) traded on a specific market (e.g., CNY/Chinese Yuan), refreshed daily at midnight (UTC). Prices and volumes are quoted in both the market-specific currency and USD.
+The related REST API documentation is [here](https://www.alphavantage.co/documentation/#currency-monthly)</description>
+		<type>DIGITAL_CRYPTO_TIME_SERIES</type>
+		<parameter name="symbol">
+			<description>The digital/crypto currency of your choice</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<parameter name="market">
+			<description>The exchange market of your choice</description>
+			<mandatory>true</mandatory>
+			<datatype>string</datatype>
+		</parameter>
+		<response>
+			<typeresponse>DIGITAL_CRYPTO_TIME_SERIES_RESPONSE</typeresponse>
+			<metadata>
+				<node>
+					<name>Information</name>
+					<text>1. Information</text>
+				</node>		
+				<node>
+					<name>DigitalCurrencyCode</name>
+					<text>2. Digital Currency Code</text>
+				</node>
+				<node>
+					<name>DigitalCurrencyName</name>
+					<text>3. Digital Currency Name</text>
+				</node>
+				<node>
+					<name>MarketCode</name>
+					<text>4. Market Code</text>
+				</node>
+				<node>
+					<name>MarketName</name>
+					<text>5. Market Name</text>
+				</node>	
+				<node>
+					<name>LastRefreshed</name>
+					<text>6. Last Refreshed</text>
+				</node>
+				<node>
+					<name>TimeZone</name>
+					<text>7. Time Zone</text>
+				</node>
+			</metadata>
+			<timeseries name = "Time Series (Digital Currency Monthly)">
+				<node>
+					<name>Open</name>
+					<text>Open (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>OpenUSD</name>
+					<text>1b. open (USD)</text>
+				</node>
+				<node>
+					<name>High</name>
+					<text>High (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>HighUSD</name>
+					<text>2b. high (USD)</text>
+				</node>
+				<node>
+					<name>Low</name>
+					<text>Low (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>LowUSD</name>
+					<text>3b. low (USD)</text>
+				</node>
+				<node>
+					<name>Close</name>
+					<text>Close (it will be overrided by the generator!)</text>
+				</node>
+				<node>
+					<name>CloseUSD</name>
+					<text>4b. close (USD)</text>
+				</node>	
+				<node>
+					<name>Volume</name>
+					<text>5. volume</text>
+				</node>				
+				<node>
+					<name>MarketCapUSD</name>
+					<text>6. market cap (USD)</text>
+				</node>
+			</timeseries>
+		</response>
+	</operation>
+</avapi>

@@ -1,0 +1,39 @@
+// {
+//     "version": "1.0.0-*",
+  
+//     "dependencies": {
+//       "NETStandard.Library": "1.6.0"
+//     },
+  
+//     "frameworks": {
+//       "netstandard1.6": {
+//         "imports": "dnxcore50"
+//       }
+//     },
+//     "runtimes": {
+//         "win10-x64": {},
+//         "osx.10.10-x64": {}
+//       }
+// }
+
+{
+    "version": "1.0.0-*",
+    "buildOptions": {
+      "emitEntryPoint": true
+    },
+    "dependencies": {
+      "Microsoft.NETCore.App": {
+        //"type": "platform",
+        "version": "1.0.0-rc2-3002702"
+      }
+    },
+    "frameworks": {
+      "netcoreapp1.0": {
+        "imports": "dnxcore50"
+      }
+    },
+    "runtimes":{
+      "win10-x64": { },
+      "ubuntu.14.04-x64": { }
+    }
+  }
