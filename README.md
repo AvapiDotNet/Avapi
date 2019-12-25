@@ -31,7 +31,7 @@ There are a number of steps you need to follow to use Avapi on .NET CORE environ
 
 1. Create an empty folder. Get into that folder and run the following command: 
 ```
-$ dotnet new console
+dotnet new console
 ```
 
 2. Add the package to your project
@@ -41,11 +41,11 @@ dotnet add package Avapi
 
 3. Restore the project
 ```
-$ dotnet restore
+dotnet restore
 ```
 
 4. Replace the content of Program.cs created automatically by 1. with the following code:
-``` 
+```csharp
 
 using System;
 using System.IO;
@@ -112,7 +112,7 @@ and replace the parameter in **connection.Connect(""Your Alpha Vantage API Key !
 
 5. Run the following commands: 
 ```
-$ dotnet run
+dotnet run
 ```
 
 6. You can enjoy your _MSFT Daily time series_ displayed on your console :)
