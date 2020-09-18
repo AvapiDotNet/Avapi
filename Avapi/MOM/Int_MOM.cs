@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace Avapi.AvapiMOM
 {
+
+    // Inteface
     public interface Int_MOM
     {
 		IAvapiResponse_MOM Query(
